@@ -1,6 +1,6 @@
-./testing.py
-./test_data.json
-./pyproject.toml
-./.idea/*
-./.idea/
+.idea/*
 .idea/
+pyproject.toml
+poetry.lock
+testing.py
+test_data.json
