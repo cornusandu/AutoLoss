@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "autoloss"
+version = "0.1.0"
+description = "AutoLoss is a complex optimizer that uses Artifical Intelligence to optimize your neural network"
+authors = ["BossBoss2011 <bogdanelsandu@hotmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+numpy = "^2.2.3"
+torch = "^2.3.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
