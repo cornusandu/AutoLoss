@@ -1,4 +1,4 @@
 ./testing.py
 ./test_data.json
 ./pyproject.toml
-./.idea
+./.idea/*
