@@ -35,12 +35,12 @@ class Bob(nn.Module):
 # Define the AutoLoss optimizer that leverages the loss predictor.
 class AutoLoss:
     def __init__(self, bob, loss_fn, candidate_noise=0.01,
-                 patience=20):
+                 patience=20, lr=0.001, hidden_dim = 32):
 
         flat_param_dim = sum(p.numel() for p in bob.parameters())
 
-        loss_predictor = LossPredictor(input_dim=flat_param_dim, hidden_dim=32)
-        sgd_optimizer = optim.SGD(bob.parameters(), lr=0.01)
+        loss_predictor = LossPredictor(input_dim=flat_param_dim, hidden_dim=hidden_dim)
+        sgd_optimizer = optim.SGD(bob.parameters(), lr=lr)
 
         self.bob = bob
         self.loss_predictor = loss_predictor
@@ -121,7 +121,7 @@ class AutoLoss:
 
         # If no improvement has been observed for a number of iterations, switch to SGD.
         if self.no_improve_count >= self.patience:
-            print("[Debug] Starting to use SGD!")
+            # print("[Debug] Starting to use SGD!")
             self.use_sgd = True
 
         # Perform a training step for Bob using the current parameters.

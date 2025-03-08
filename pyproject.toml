@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "autoloss"
-version = "1.0.0"
+version = "1.1.0"
 description = "AutoLoss is a complex optimizer that uses Artifical Intelligence to optimize your neural network"
 authors = ["BossBoss2011 <bogdanelsandu@hotmail.com>"]
 readme = "README.md"
