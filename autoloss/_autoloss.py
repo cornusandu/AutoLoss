@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import math
+from typing import Optional
 
 # Define the loss predictor as a simple feedforward network.
 class LossPredictor(nn.Module):
@@ -64,12 +65,15 @@ class AutoLoss:
             p.data.copy_(flat_params[current_idx:current_idx + numel].view_as(p))
             current_idx += numel
 
-    def step(self, x, target):
+    def step(self, x: Optional[torch.Tensor], target):
         # If the predictor has not found improvements for several iterations,
         # switch to standard SGD.
         if self.use_sgd:
             self.sgd_optimizer.zero_grad()
-            output = self.bob(x)
+            if x is not None:
+                output = self.bob(x)
+            else:
+                output = self.bob()
             loss = self.loss_fn(output, target)
             loss.backward()
             self.sgd_optimizer.step()
@@ -87,7 +91,10 @@ class AutoLoss:
         # Compute the actual loss using the current parameters.
         self.bob.eval()
         with torch.no_grad():
-            current_output = self.bob(x)
+            if x is not None:
+                current_output = self.bob(x)
+            else:
+                current_output = self.bob()
             current_loss = self.loss_fn(current_output, target).item()
 
         # Accept candidate parameters if the predicted loss is lower.

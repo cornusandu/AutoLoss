@@ -2,7 +2,7 @@ import json
 import json
 import torch
 import torch.nn as nn
-from AutoLoss import autoloss
+from autoloss import autoloss
 import datasets
 from transformers import AutoTokenizer
 import colorama

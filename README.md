@@ -2,8 +2,9 @@
 AutoLoss is an optimizer that uses Artificial Intelligence to optimize your neural networks as well as possible.
 ## Usage
 First, import the package and other dependencies:
+
 ```python
-from AutoLoss import *
+from autoloss import *
 import torch
 import torch.nn as nn
 ```

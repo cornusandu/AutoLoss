@@ -1,5 +1,8 @@
 .idea/
+./idea/*
 pyproject.toml
 poetry.lock
 testing.py
 test_data.json
+./dist
+./dist/*
